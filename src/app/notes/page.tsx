@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { createClient } from '../../../lib/supabase/server';
 import { cookies } from 'next/headers';
+import NoteListItem from '../components/NoteListItem';
 
 export default async function NotesListPage() {
   const cookieStore = cookies()
@@ -12,7 +13,6 @@ export default async function NotesListPage() {
     .select('id, title')
     .order('created_at', { ascending: false });
 
-  console.log("🚀 ~ NotesListPage ~ notes:", notes)
   if (error) {
     throw new Error('Failed to fetch notes');
   }
@@ -21,8 +21,12 @@ export default async function NotesListPage() {
 
   return (
     <div>
+      <div className="hover:bg-red-500 bg-green-200 w-40 h-40">
+        Hover test
+      </div>
+
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Your Notes</h2>
+        <h2 className="text-xl font-semibold">My Notes</h2>
         <Link
           href="/notes/new"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -30,18 +34,7 @@ export default async function NotesListPage() {
           + New Note
         </Link>
       </div>
-      <ul className="space-y-2">
-        {mockNotes.map((note) => (
-          <li key={note.id}>
-            <Link
-              href={`/notes/${note.id}`}
-              className="block p-4 text-grey-200 hover:bg-white"
-            >
-              {note.title || 'Untitled Note'}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <NoteListItem notes={mockNotes} />
     </div>
   );
 }

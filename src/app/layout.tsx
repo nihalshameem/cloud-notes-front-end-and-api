@@ -28,7 +28,7 @@ export default function RootLayout({
       {/* <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       > */}
-      <body className="bg-gray-50 text-gray-900 font-sans">
+      <body className=" font-sans">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <header className="mb-6">
             <h1 className="text-3xl font-bold text-blue-600">📝 Cloud Notes</h1>
