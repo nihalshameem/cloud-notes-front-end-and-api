@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SupabaseProvider } from "../../lib/supabase/SupabaseProvider";
+import CommonHeader from "./components/CommonHeader";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -30,10 +31,8 @@ export default function RootLayout({
       > */}
       <body className=" font-sans">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <header className="mb-6">
-            <h1 className="text-3xl font-bold text-blue-600">📝 Cloud Notes</h1>
-          </header>
           <SupabaseProvider>
+            <CommonHeader />
             {children}
           </SupabaseProvider>
         </div>

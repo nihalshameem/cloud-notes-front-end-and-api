@@ -1,4 +1,6 @@
 "use client";
+import "@/app/css/NoteListItem.scss";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, useCallback } from "react";
@@ -34,7 +36,7 @@ const NoteListItem: FC<Props> = ({ notes }) => {
     return (
         <ul className="space-y-2">
             {notes.map((note) => (
-                <li key={note.id} className="group flex items-center justify-between p-0 text-gray-300 hover:bg-gray-300 hover:text-black rounded transition-colors">
+                <li key={note.id} className="flex justify-between p-0 hover:text-black rounded transition-colors note-list-item">
                     <Link
                         href={`/notes/${note.id}`}
                         className="flex-1 block p-4 "
@@ -42,7 +44,7 @@ const NoteListItem: FC<Props> = ({ notes }) => {
                         {note.title || 'Untitled Note'}
                     </Link>
                     <button
-                        className="opacity-0 group-hover:opacity-100 transition-opacity ml-2 text-red-500 hover:text-red-700 p-2 cursor-pointer"
+                        className="transition-opacity ml-2 text-red-500 hover:text-red-700 p-2 cursor-pointer"
                         aria-label="Delete note"
                         type="button"
                         onClick={() => handleDeleteNote(note.id)}

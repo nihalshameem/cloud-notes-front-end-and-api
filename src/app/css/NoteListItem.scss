@@ -1,0 +1,16 @@
+.note-list-item {
+
+    button {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        background: var(--foreground);
+        color: var(--background);
+
+        button {
+            opacity: 1;
+        }
+    }
+}
