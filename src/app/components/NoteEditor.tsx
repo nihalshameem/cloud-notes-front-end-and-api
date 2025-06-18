@@ -128,7 +128,7 @@ const NoteEditor: FC<Props> = ({ noteId = '', title = '', initialContent = '' })
                 router.refresh();
             }
         }
-    }, [title, session?.user?.id])
+    }, [title, newId, noteId, router, session?.user, supabase, session?.user?.id])
 
     if (!editor) return null;
 

@@ -29,7 +29,7 @@ const NoteListItem: FC<Props> = ({ notes }) => {
             console.log(`Note with ID ${noteId} deleted successfully.`);
             router.refresh(); // Refresh the page to reflect the deletion
         }
-    }, [notes]);
+    }, [notes, router, supabase]);
 
     return (
         <ul className="space-y-2">

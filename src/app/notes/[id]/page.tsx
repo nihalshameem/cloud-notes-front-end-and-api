@@ -1,22 +1,9 @@
 import NoteEditor from '@/app/components/NoteEditor';
 import { cookies } from 'next/headers';
 import { createClient } from '../../../../lib/supabase/server';
+import { PageParamsType } from '../../../../utils/commonUtils';
 
-type Params = Promise<{ id: string }>
-type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
-
-export async function generateMetadata(props: {
-  params: Params
-  searchParams: SearchParams
-}) {
-  const params = await props.params
-  const searchParams = await props.searchParams
-}
-
-export default async function Page(props: {
-  params: Params
-  searchParams: SearchParams
-}) {
+export default async function Page(props: {params: PageParamsType}) {
   const { id } = await props.params
   const cookieStore = cookies()
   const supabase = createClient(cookieStore)

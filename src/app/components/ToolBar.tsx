@@ -2,12 +2,15 @@
 
 import { FC } from 'react';
 import { Bold, Heading2, Highlighter, Italic, List, UnderlineIcon } from 'lucide-react';
+import { Editor } from '@tiptap/core'
 
 type Props = {
-    editor: any;
+    editor: Editor | null;
 };
 
 const ToolBar: FC<Props> = ({ editor }) => {
+
+    if (!editor) return null;
 
     const buttonClass = (active: boolean) =>
         `px-3 py-1 rounded-md border text-sm font-medium ${active
